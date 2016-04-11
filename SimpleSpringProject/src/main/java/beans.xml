@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	<context:component-scan base-package="org.springframework.chapter1.service"></context:component-scan>
+	<bean id="empServiceBean" class="org.springframework.chapter2.ApplicationContext.EmployeeServiceImpl">
+	</bean>
+	<bean id="employee" class="org.springframework.chapter2.ApplicationContext.Employee">
+		<property name="list">
+			<list>
+				<value>List 1</value>
+				<value>List 2</value>
+			</list>
+		</property>
+		<property name="set">
+			<set>
+				<value>Set 1</value>
+				<value>Set 2</value>
+			</set>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="key 1" value="value 1">
+				</entry>
+				<entry key="key 2" value="value 2">
+				</entry>
+			</map>
+		</property>
+	</bean>
+	<bean id="atmBean" class="org.springframework.chapter2.ApplicationContext.ATM">
+		<property name="printer">
+			<bean class="org.springframework.chapter2.ApplicationContext.Printer">
+				<property name="message" value="The balance information is printed by the printer for the account number : "></property>
+			</bean>
+		</property>
+	</bean>
+	<bean id="parentEmployee" class="org.springframework.chapter2.ApplicationContext.Employee1" abstract="true">
+		<property name="employeeId" value="8"></property>
+	</bean>
+	<bean id="employeeBean1" class="org.springframework.chapter2.ApplicationContext.Employee1" parent="parentEmployee">
+		<property name="employeeName" value="Gagan"></property>
+		<property name="country" value="India"></property>
+	</bean>
+	<bean id="employeeServiceBean1" class="org.springframework.chapter2.ApplicationContext.EmployeeServiceImpl1" scope="prototype">
+	</bean>
+	<bean id="employeeServiceBean2" class="org.springframework.chapter2.ApplicationContext.EmployeeServiceImpl2" init-method="myInit" destroy-method="dest">
+	</bean>
+</beans>
