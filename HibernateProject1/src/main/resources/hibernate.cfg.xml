@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.password">ARIHANT</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://127.0.0.1:5432/hibernate</property>
+        <property name="hibernate.connection.username">postgres</property>
+        
+        <!-- connection pool size -->
+        <property name="hibernate.connection.pool_size">1</property>
+        
+        <!--  hibernate dialect -->
+     	<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+     	
+     	<!-- second level cache disable -->
+     	<property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+     	
+     	<!-- echo all executed sql to stdout -->
+     	<property name="show_sql">true</property>
+     	
+     	<!-- drop and re create the database schema on startup -->
+     	<property name="hbm2ddl.auto">create</property>
+     	
+     	<!-- name the annotated entity class -->
+     	<mapping class="com.javabrains.hibernate.dto.UserDetails"/>
+     	<mapping class="com.javabrains.hibernate.dto.Vehicle"/>
+     	<mapping class="com.javabrains.hibernate.dto.TwoWheeler"/>
+     	<mapping class="com.javabrains.hibernate.dto.FourWheeler"/>
+     	
+     	
+    </session-factory>
+</hibernate-configuration>
